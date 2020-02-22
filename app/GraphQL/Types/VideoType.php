@@ -51,8 +51,9 @@ class VideoType extends GraphQLType
 
     public function resolveUserField(Video $video, $args)
     {
-//        return $video->user()->first();
+        return $video->user()->first();
 
+        // todo Use DataLoader
         $userDataLoader = app(UserDataLoader::class);
         return $userDataLoader->load($video->user_id);
 //
