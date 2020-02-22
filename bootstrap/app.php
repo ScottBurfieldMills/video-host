@@ -11,6 +11,13 @@
 |
 */
 
+use Overblog\DataLoader\Promise\Adapter\Webonyx\GraphQL\SyncPromiseAdapter;
+use Overblog\PromiseAdapter\Adapter\ReactPromiseAdapter;
+use Overblog\PromiseAdapter\Adapter\WebonyxGraphQLSyncPromiseAdapter;
+use Overblog\PromiseAdapter\PromiseAdapterInterface;
+use React\EventLoop\LoopInterface;
+use React\EventLoop\StreamSelectLoop;
+
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
