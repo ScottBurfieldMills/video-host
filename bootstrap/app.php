@@ -11,6 +11,7 @@
 |
 */
 
+use Aws\S3\S3Client;
 use Overblog\DataLoader\Promise\Adapter\Webonyx\GraphQL\SyncPromiseAdapter;
 use Overblog\PromiseAdapter\Adapter\ReactPromiseAdapter;
 use Overblog\PromiseAdapter\Adapter\WebonyxGraphQLSyncPromiseAdapter;
@@ -48,6 +49,18 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->bind(S3Client::class, static function () {
+    $credentials = new Aws\Credentials\Credentials(
+        env('AWS_ACCESS_KEY_ID'),
+        env('AWS_SECRET_ACCESS_KEY')
+    );
+
+    return new S3Client([
+        'region' => env('AWS_DEFAULT_REGION'),
+        'credentials' => $credentials,
+        'version' => '2006-03-01'
+    ]);
+});
 /*
 |--------------------------------------------------------------------------
 | Return The Application

@@ -109,6 +109,7 @@ return [
             ],
             'mutation' => [
                 // 'example_mutation'  => ExampleMutation::class,
+                'initiateVideoUpload' => \App\GraphQL\Mutations\InitiateVideoUpload::class
             ],
             'middleware' => [],
             'method' => ['get', 'post'],
@@ -129,7 +130,8 @@ return [
         // 'relation_example'  => ExampleRelationType::class,
         // \Rebing\GraphQL\Support\UploadType::class,
         'Video' => \App\GraphQL\Types\VideoType::class,
-        'User' => \App\GraphQL\Types\UserType::class
+        'User' => \App\GraphQL\Types\UserType::class,
+        'InitiateVideoUpload' => \App\GraphQL\Types\InitiateVideoUploadType::class
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request
